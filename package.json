@@ -2,7 +2,7 @@
   "name": "burger_app",
   "version": "1.0.0",
   "description": "An app that makes your burgers for you",
-  "main": "main.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/smibbie/Burger_App.git"
   },
-  "author": "",
+  "author": "Britney Aronson",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/smibbie/Burger_App/issues"
