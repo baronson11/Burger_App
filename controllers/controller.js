@@ -19,21 +19,15 @@ router.get("/", (req, res) => {
 router.post("/api/burgers", (req, res) => {
   let { burgerName } = req.body;
   let { devoured } = req.body;
-  burger.create(["burgerName", "devoured"], [{ burgerName }, { devoured }], (result) => {
+  burger.create( burgerName, devoured, (result) => {
     res.json({ id: result.insertId });
   });
 });
 
 router.put("/api/burgers/:id", (req, res) => {
   let { id } = req.params;
-  let { burgerName } = req.body;
-  let identity = `id = ${id}`
-  console.log();
-  burger.update(
-    {
-      burgerName: `${burgerName}`
-    },
-    identity,
+  let { devoured } = req.body;
+  burger.update( "devoured", devoured,
     (result) => {
       if (result.changedRows === 0) {
         // throw 404 if id doesnt exist
@@ -45,5 +39,4 @@ router.put("/api/burgers/:id", (req, res) => {
   );
 });
 
-// Export routes for server.js to use.
 module.exports = router;
