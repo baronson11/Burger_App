@@ -16,9 +16,20 @@ router.get("/", (req, res) => {
   });
 });
 
+router.get("/api/burgers", (req, res) => {
+  burger.select((data) => {
+    let newBurger = {
+      burger: data
+    }
+    res.json(newBurger);
+  })
+});
+
 router.post("/api/burgers", (req, res) => {
-  let { burgerName } = req.body;
+  console.log(req.body);
+  let { burger_name } = req.body;
   let { devoured } = req.body;
+  console.log(burger_name, devoured);
   burger.create( burgerName, devoured, (result) => {
     res.json({ id: result.insertId });
   });
@@ -30,10 +41,8 @@ router.put("/api/burgers/:id", (req, res) => {
   burger.update( "devoured", devoured,
     (result) => {
       if (result.changedRows === 0) {
-        // throw 404 if id doesnt exist
         return res.status(404).end();
       }
-      // throw okay if exists
       res.status(200).end();
     }
   );

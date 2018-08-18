@@ -16,19 +16,27 @@ button.addEventListener("click", (e) => {
   // console.log(newDevoured);
   // console.log(id);
 
-  fetch(`/api/burgers/${id}`, {
-    method: "PUT",
-    headers: {
-      "Accept": "application/json, text/plain, */*",
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(newDevoured)
-  })
-  .then((res) => res.json())
-  .then((data) => {
-    console.log(`Changed devoured to ${data}`);
-    // location.reload();
-  });
+  function update() {
+    fetch(`/api/burgers/${id}`, {
+      method: "PUT",
+      headers: {
+        "Accept": "application/json, text/plain, */*",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newDevoured)
+    })
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      console.log(`Changed devoured to ${data}`);
+      // location.reload();
+    })
+    .catch(err => console.log(err));
+  }
+
+  update();
+
 });
 
 // Create ---------------------------------
@@ -42,20 +50,28 @@ form.addEventListener("submit", (e) => {
     devoured: devoured.value
   }
   // Test
-  // console.log(newBurger);
+  console.log(newBurger);
+  const url = `/api/burgers`;
 
-    fetch(`/api/burgers/`, {
-      method: "POST",
-      headers: {
-        "Accept": "application/json, text/plain, */*",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(newBurger)
+  const newData = {
+    method: "POST",
+    headers: new Headers(),
+    body: newBurger
+  }
+
+  function create() {
+    fetch(url, newData)
+    .then((res) => {
+      return res.json();
     })
-    .then((res) => res.json())
     .then((data) => {
       console.log(data);
-    });
+    })
+    .catch(err => console.log(err));
+  }
+
+  create();
+
 });
 
 // DOM Loaded Wrapper -----------------------------

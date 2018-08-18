@@ -16,7 +16,7 @@ const orm = {
   },
 
   insertOne: (table, burgerName, devoured, callback) => {
-    let sql = `INSERT INTO ?? (burger_name, devoured) VALUES (?, ?)`;
+    let sql = `INSERT INTO ?? (burger_name, devoured) VALUES (burger_name=?, devoured=?)`;
     database.query(sql, [table, burgerName, devoured], (err, results) => {
       if (err) throw err;
       console.log(results);
