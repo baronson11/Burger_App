@@ -3,31 +3,37 @@
 <h1>Eat-Da-Burger!</h1>
 <h5>The app that encourages unhealthy eating habits...</h4>
 
-<h3>Burgers that are not devoured!</h2>
+<div class="wrapper">
+  <div class="notDevoured">
+    <h3>Burgers that are not devoured!</h2>
 
-<ul>
-  {{#each burger}}
-    {{#unless devoured}}
-    <li class="list">
-      <p>{{this.burger_name}} <button class="devour" data-id="{{this.id}}" data-devoured="{{this.devoured}}">Devour</button></p>
-    </li>
-    {{/unless}}
-  {{/each}}
-</ul>
+    <ul>
+      {{#each burger}}
+        {{#unless devoured}}
+        <li class="list">
+          <p>{{this.burger_name}} <button class="devour" data-id="{{this.id}}" data-devoured="{{this.devoured}}">Devour</button></p>
+        </li>
+        {{/unless}}
+      {{/each}}
+    </ul>
+  </div>
 
-<h3>Burgers that are devoured!</h2>
+  <div class="devoured">
+    <h3>Burgers that are devoured!</h2>
 
-<ul>
-  {{#each burger}}
-    {{#if devoured}}
-    <li class="list">
-      <p>{{this.burger_name}}</p>
-    </li>
-    {{/if}}
-  {{/each}}
-</ul>
+    <ul>
+      {{#each burger}}
+        {{#if devoured}}
+        <li class="list">
+          <p>{{this.burger_name}}</p>
+        </li>
+        {{/if}}
+      {{/each}}
+    </ul>
+  </div>
+</div>
 
-<h3>Add a Burger</h2>
+<h3>Order a Burger</h2>
 <form class="form" >
 
   <div class="form-group">
@@ -36,7 +42,6 @@
   </div>
 
   <div class="form-group">
-    <label for="devoured">Devoured?</label><br>
     <input type="radio" name="newburger" value="1" checked> Devoured!<br>
     <input type="radio" name="newburger" value="0"> Not Devoured
   </div>

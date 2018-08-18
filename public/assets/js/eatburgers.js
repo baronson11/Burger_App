@@ -16,8 +16,7 @@ button.addEventListener("click", (e) => {
   // console.log(newDevoured);
   // console.log(id);
 
-  function update() {
-    fetch(`/api/burgers/${id}`, {
+  fetch(`/api/burgers/${id}`, {
       method: "PUT",
       headers: {
         "Accept": "application/json, text/plain, */*",
@@ -33,10 +32,6 @@ button.addEventListener("click", (e) => {
       // location.reload();
     })
     .catch(err => console.log(err));
-  }
-
-  update();
-
 });
 
 // Create ---------------------------------
@@ -59,8 +54,7 @@ form.addEventListener("submit", (e) => {
     body: newBurger
   }
 
-  function create() {
-    fetch(url, newData)
+  fetch(url, newData)
     .then((res) => {
       return res.json();
     })
@@ -68,9 +62,6 @@ form.addEventListener("submit", (e) => {
       console.log(data);
     })
     .catch(err => console.log(err));
-  }
-
-  create();
 
 });
 

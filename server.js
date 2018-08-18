@@ -5,7 +5,7 @@ const handlebars = require("express-handlebars");
 const routes = require("./controllers/controller.js");
 
 // PORT --------------------------------------------------
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
 // Run Express --------------------------------------------
 const app = express();
