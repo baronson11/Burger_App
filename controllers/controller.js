@@ -16,15 +16,6 @@ router.get("/", (req, res) => {
   });
 });
 
-router.get("/api/burgers", (req, res) => {
-  burger.select((data) => {
-    let newBurger = {
-      burger: data
-    }
-    res.json(newBurger);
-  })
-});
-
 router.post("/api/burgers", (req, res) => {
   console.log(req.body);
   let { burger_name } = req.body;

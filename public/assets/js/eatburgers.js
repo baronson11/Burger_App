@@ -13,8 +13,8 @@ button.addEventListener("click", (e) => {
     devoured: devoured
   };
 // Test
-  // console.log(newDevoured);
-  // console.log(id);
+  console.log(newDevoured);
+  console.log(id);
 
   fetch(`/api/burgers/${id}`, {
       method: "PUT",
