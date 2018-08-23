@@ -17,7 +17,6 @@ router.get("/", (req, res) => {
 });
 
 router.post("/api/burgers", (req, res) => {
-  console.log(req.body);
   let { burger_name } = req.body;
   let { devoured } = req.body;
   console.log(burger_name, devoured);
@@ -29,6 +28,8 @@ router.post("/api/burgers", (req, res) => {
 router.put("/api/burgers/:id", (req, res) => {
   let { id } = req.params;
   let { devoured } = req.body;
+  console.log(devoured);
+  console.log(id);
   burger.update( "devoured", devoured,
     (result) => {
       if (result.changedRows === 0) {

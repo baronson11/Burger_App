@@ -9,14 +9,21 @@ button.addEventListener("click", (e) => {
   let id = e.target.getAttribute("data-id");
   let devoured = e.target.getAttribute("data-devoured");
 
+  if (devoured === 0) {
+    devoured = false;
+  } else if (devoured === 1) {
+    devoured = true;
+  }
+
   let newDevoured = {
     devoured: devoured
   };
+
 // Test
   console.log(newDevoured);
   console.log(id);
 
-  fetch(`/api/burgers/${id}`, {
+  fetch(`http://localhost:3000/api/burgers/${id}`, {
       method: "PUT",
       headers: {
         "Accept": "application/json, text/plain, */*",
@@ -29,7 +36,7 @@ button.addEventListener("click", (e) => {
     })
     .then((data) => {
       console.log(`Changed devoured to ${data}`);
-      // location.reload();
+      location.reload();
     })
     .catch(err => console.log(err));
 });
@@ -40,26 +47,34 @@ form.addEventListener("submit", (e) => {
   let burgerName = document.getElementById("burgerName");
   let devoured = document.querySelector("[name=newburger]:checked");
 
+  if (devoured === 0) {
+    devoured = false;
+  } else if (devoured === 1) {
+    devoured = true;
+  }
+
   let newBurger = {
     burger_name: burgerName.value,
     devoured: devoured.value
   }
+
   // Test
   console.log(newBurger);
-  const url = `/api/burgers`;
 
-  const newData = {
-    method: "POST",
-    headers: new Headers(),
-    body: newBurger
-  }
-
-  fetch(url, newData)
+  fetch(`http://localhost:3000/api/burgers`, {
+      method: "POST",
+      headers: {
+        "Accept": "application/json, text/plain, */*",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newBurger)
+    })
     .then((res) => {
       return res.json();
     })
     .then((data) => {
       console.log(data);
+      location.reload();
     })
     .catch(err => console.log(err));
 
